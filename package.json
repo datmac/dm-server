@@ -1,0 +1,26 @@
+{
+  "name": "mill-server",
+  "version": "0.0.0",
+  "description": "The Mill server",
+  "main": "./lib/mill-server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/milljs/mill-server.git"
+  },
+  "keywords": [
+    "mill",
+    "command"
+  ],
+  "author": "Luke Madel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/milljs/mill-server/issues"
+  },
+  "preferGlobal": "true",
+  "bin": {
+    "http-server": "./bin/mill-server"
+  }
+}

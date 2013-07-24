@@ -42,10 +42,17 @@ function starter(err, port) {
   }
   var app = connect();
   argv._.forEach(function (plugin) {
-      var mdl = ms.middleware(plugin);
-      log('Register '.yellow + '/'.blue + plugin.blue + ' ' + (mdl ? 'enabled'.green: 'ignored'.red));
-      if (mdl) {
-        app.use('/' + plugin, mdl);
+      var manifest = ms.load(plugin);
+      if (!manifest) {
+        manifest = ms.load('mill-' + plugin);
+      }
+      if (manifest) {
+        var route = '/' + manifest.id;
+        log('Register '.green + route.blue);
+        app.use(route, ms.register(manifest));
+      }
+      else {
+        log('Ignore '.yellow + plugin.red);
       }
     }
   );

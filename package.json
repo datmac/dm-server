@@ -19,6 +19,14 @@
   "bugs": {
     "url": "https://github.com/milljs/mill-server/issues"
   },
+  "dependencies": {
+    "colors": "0.6.x",
+    "optimist": "0.5.x",
+    "connect": "",
+    "debug": "*",
+    "formatik": "*",
+    "portfinder": "0.2.x"
+  },
   "preferGlobal": "true",
   "bin": {
     "http-server": "./bin/mill-server"

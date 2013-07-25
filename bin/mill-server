@@ -4,13 +4,13 @@
 var colors = require('colors'),
     portfinder = require('portfinder'),
     connect = require('connect'),
-    ms = require('../lib/mill-server')
+    md = require('../lib/middleware')
 ;
 
 var optimist = require('optimist')
 .usage('Usage: mill-server [options] commands ')
 .alias('p', 'port')
-.default('p', 8080)
+.default('p', 7611)
 .describe('p', 'Port to use')
 .alias('a', 'address')
 .default('a', '0.0.0.0')
@@ -42,14 +42,14 @@ function starter(err, port) {
   }
   var app = connect();
   argv._.forEach(function (plugin) {
-      var manifest = ms.load(plugin);
+      var manifest = md.load(plugin);
       if (!manifest) {
-        manifest = ms.load('mill-' + plugin);
+        manifest = md.load('mill-' + plugin);
       }
       if (manifest) {
         var route = '/' + manifest.id;
         log('Register '.green + route.blue);
-        app.use(route, ms.register(manifest));
+        app.use(route, md.get(manifest));
       }
       else {
         log('Ignore '.yellow + plugin.red);

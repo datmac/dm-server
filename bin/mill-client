@@ -38,7 +38,7 @@ if (argv.h || argv._.length === 0) {
 var qry_options = {
   host: argv.address,
   port: argv.port,
-  path: '/' + argv._[0],
+  path: '/' + argv._[0].replace(/^\/+/, ''),
   method: 'PUT',
   headers: {
     'Connection' : 'keep-alive',
@@ -47,13 +47,19 @@ var qry_options = {
 }
 var qry = http.request(qry_options, function (qry_res) {
     if (qry_res.statusCode !== 200) {
-      console.error(qry_res.statusCode.red + ' received.'.red);
+      console.error(qry_res.statusCode.toString().red + ' received.'.red);
+	  process.exit(qry_res.statusCode);
     }
     else {
       qry_res.on('data', function (chunk) {
           process.stdout.write(chunk)
         }
       );
+	  qry_res.on('end', function () {
+		  process.exit(qry_res.statusCode);
+        }
+      );
+
     }
   }
 );

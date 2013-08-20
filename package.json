@@ -1,6 +1,6 @@
 {
   "name": "mill-server",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "The Mill server",
   "main": "./lib/mill-server.js",
   "scripts": {
@@ -27,8 +27,7 @@
     "formatik": "*",
     "portfinder": "0.2.x"
   },
-  "preferGlobal": "true",
   "bin": {
-    "http-server": "./bin/mill-server"
+    "mill-server": "./bin/mill-server"
   }
 }

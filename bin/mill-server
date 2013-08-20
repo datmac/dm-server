@@ -8,7 +8,7 @@ var colors = require('colors'),
 ;
 
 var optimist = require('optimist')
-.usage('Usage: mill-server [options] commands ')
+.usage('Usage: mill-server [options] command  [command]')
 .alias('p', 'port')
 .default('p', 7611)
 .describe('p', 'Port to use')

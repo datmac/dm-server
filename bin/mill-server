@@ -4,7 +4,7 @@
 var colors = require('colors'),
     portfinder = require('portfinder'),
     connect = require('connect'),
-    md = require('../lib/middleware')
+    mill = require('../lib/server')
 ;
 
 var optimist = require('optimist')
@@ -42,14 +42,14 @@ function starter(err, port) {
   }
   var app = connect();
   argv._.forEach(function (plugin) {
-      var manifest = md.load(plugin);
+      var manifest = mill.load(plugin);
       if (!manifest) {
-        manifest = md.load('mill-' + plugin);
+        manifest = mill.load('mill-' + plugin);
       }
       if (manifest) {
         var route = '/' + manifest.id;
         log('Register '.green + route.blue);
-        app.use(route, md.get(manifest));
+        app.use(route, mill.command(manifest));
       }
       else {
         log('Ignore '.yellow + plugin.red);

@@ -43,10 +43,7 @@ function starter(err, port) {
   var app = connect();
   argv._.forEach(function (plugin) {
       var manifest = mill.load(plugin);
-      if (!manifest) {
-        manifest = mill.load('mill-' + plugin);
-      }
-      if (manifest) {
+	  if (manifest) {
         var route = '/' + manifest.id;
         log('Register '.green + route.blue);
         app.use(route, mill.command(manifest));

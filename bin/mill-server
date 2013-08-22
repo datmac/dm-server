@@ -41,6 +41,11 @@ function starter(err, port) {
     throw err;
   }
   var app = connect();
+  app.use(function (req, res, next) {
+		req.pause(); 
+		next();
+	  }
+  );
   argv._.forEach(function (plugin) {
       var manifest = mill.load(plugin);
 	  if (manifest) {

@@ -22,9 +22,12 @@
     "colors": "0.6.x",
     "optimist": "0.5.x",
     "connect": "latest",
+    "async": "latest",
     "debug": "*",
     "formatik": "*",
-    "portfinder": "0.2.x"
+    "utils-merge": "latest",
+    "portfinder": "0.2.x",
+    "express": "~3.3.8"
   },
   "bin": {
     "mill-server": "./bin/mill-server"

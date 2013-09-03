@@ -4,6 +4,7 @@
 var colors = require('colors'),
     portfinder = require('portfinder'),
     connect = require('connect'),
+	express = require('express'),
     mill = require('../lib/server')
 ;
 
@@ -40,7 +41,7 @@ function starter(err, port) {
   if (err) {
     throw err;
   }
-  var app = connect();
+  var app = express();
   app.use(function (req, res, next) {
 		req.pause(); 
 		next();

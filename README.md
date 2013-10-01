@@ -1,2 +1,2 @@
-mill-server
+dm-server
 ===========

@@ -21,7 +21,6 @@
   "dependencies": {
     "colors": "0.6.x",
     "optimist": "0.5.x",
-    "connect": "latest",
     "async": "latest",
     "debug": "*",
     "formatik": "*",

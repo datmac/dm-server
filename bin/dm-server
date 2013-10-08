@@ -5,11 +5,11 @@ var colors = require('colors'),
     portfinder = require('portfinder'),
     connect = require('connect'),
 	express = require('express'),
-    mill = require('../lib/server')
+    server = require('../lib/server')
 ;
 
 var optimist = require('optimist')
-.usage('Usage: mill-server [options] command  [command]')
+.usage('Usage: dm-server [options] command  [command]')
 .alias('p', 'port')
 .default('p', 7611)
 .describe('p', 'Port to use')
@@ -48,11 +48,11 @@ function starter(err, port) {
 	  }
   );
   argv._.forEach(function (plugin) {
-      var manifest = mill.load(plugin);
+      var manifest = server.load(plugin);
 	  if (manifest) {
         var route = '/' + manifest.id;
         log('Register '.green + route.blue);
-        app.use(route, mill.command(manifest));
+        app.use(route, server.command(manifest));
       }
       else {
         log('Ignore '.yellow + plugin.red);
@@ -60,7 +60,7 @@ function starter(err, port) {
     }
   );
   app.listen(port, argv.address);
-  log('Starting up mill-server, serving '.yellow
+  log('Starting up dm-server, serving '.yellow
     + argv.address
     + ' on port: '.yellow
     + port.toString().cyan);

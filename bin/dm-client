@@ -6,7 +6,7 @@ var colors = require('colors'),
 ;
 
 var optimist = require('optimist')
-.usage('Usage: mill-client [options] route')
+.usage('Usage: dm-client [options] route')
 .alias('t', 'type')
 .default('t', 'text/plain')
 .describe('p', 'Port to use')

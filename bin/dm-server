@@ -3,7 +3,6 @@
 
 var colors = require('colors'),
     portfinder = require('portfinder'),
-    connect = require('connect'),
 	express = require('express'),
     server = require('../lib/server')
 ;
